@@ -27,7 +27,7 @@ services:
     environment:
       - REDIS_PASSWORD=111111
     ports:
-      - 6379:6379
+      - 16379:6379
 
   tomcat:
     container_name: rs_tomcat
