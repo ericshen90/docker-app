@@ -30,7 +30,8 @@ services:
       - 6379:6379
 
   tomcat:
-    images: tomcat
+    container_name: rs_tomcat
+    image: tomcat
     restart: always
     environment:
       TZ: Asia/Shanghai
