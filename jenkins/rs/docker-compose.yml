@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+  mysql:
+    container_name: rs_mysql
+    image: mysql:5.7.28
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: VV12345!
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf/my.cnf:/etc/my.cnf
+    ports:
+      - 13306:3306
+
+  # MySQL 的 Web 客户端
+  adminer:
+    container_name: rs_adminer
+    image: adminer:4.7.4
+    restart: always
+    ports:
+      - 19090:8080
+
+  redis:
+    container_name: rs_redis
+    image: redis:5.0.6
+    ports:
+      - 6379:6379
+
+  tomcat:
+    images: tomcat
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+    volumes:
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
+    ports:
+      - 18080:8080
