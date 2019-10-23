@@ -31,6 +31,9 @@ services:
       - ./tomcat/webapps:/usr/local/tomcat/webapps
     ports:
       - 18080:8080
+    depends_on:
+      - mysql
+      - redis
 
   nginx:
     container_name: rs_nginx
@@ -41,3 +44,5 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/dist:/usr/share/nginx/dist
+    depends_on:
+      - tomcat
