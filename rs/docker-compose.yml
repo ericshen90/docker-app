@@ -6,7 +6,7 @@ services:
     image: mysql:5.7.28
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: VV12345!
+      MYSQL_ROOT_PASSWORD: Vv12345!
     volumes:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/conf/my.cnf:/etc/my.cnf
@@ -24,6 +24,8 @@ services:
   redis:
     container_name: rs_redis
     image: redis:5.0.6
+    environment:
+      - REDIS_PASSWORD=111111
     ports:
       - 6379:6379
 
@@ -36,3 +38,13 @@ services:
       - ./tomcat/webapps:/usr/local/tomcat/webapps
     ports:
       - 18080:8080
+
+  nginx:
+    container_name: rs_nginx
+    image: nginx:1.17.5
+    restart: always
+    ports:
+      - 18081:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/dist:/usr/share/nginx/dist
