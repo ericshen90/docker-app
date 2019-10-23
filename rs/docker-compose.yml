@@ -13,14 +13,6 @@ services:
     ports:
       - 13306:3306
 
-  # MySQL 的 Web 客户端
-  adminer:
-    container_name: rs_adminer
-    image: adminer:4.7.4
-    restart: always
-    ports:
-      - 19090:8080
-
   redis:
     container_name: rs_redis
     image: redis:5.0.6
